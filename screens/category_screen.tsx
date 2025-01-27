@@ -5,14 +5,6 @@ import CategoryGridTile from "components/categoryGridTile";
 import { ListRenderItemInfo } from "react-native";
 
 
-
-
-
-
-
-
-
-
 function CatgoryScreen({ navigation }: { navigation: any }) {
 
 
@@ -21,11 +13,15 @@ function CatgoryScreen({ navigation }: { navigation: any }) {
             pressHandler();
 
         }} />
+
+        function pressHandler() {
+            navigation.navigate('MealsOverviewScreen', {
+                categoryId: item
+            });
+        }
     }
 
-    function pressHandler() {
-        navigation.navigate('MealsOverviewScreen');
-    }
+
 
     return (
         <View>
