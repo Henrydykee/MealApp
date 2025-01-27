@@ -4,6 +4,7 @@ import CategoryScreen from './screens/category_screen'; // Fixed typo in import
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealsOverviewScreen from 'screens/meals_overview_screen';
+import DetailScreen from 'screens/detail_screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,12 +29,14 @@ export default function App() {
 
             />
             <Stack.Screen name='MealsOverviewScreen' component={MealsOverviewScreen}
+         
               // options={({ route, navigation }) => {
               //   const categoryTitle: string = route.params.categoryId.title; 
               //   return { title: categoryTitle };
               // }}
 
             />
+            <Stack.Screen name='DetailScreen' component={DetailScreen} />
 
           </Stack.Navigator>
         </NavigationContainer>

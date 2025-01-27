@@ -4,15 +4,18 @@ import { MEALS } from "data/dummy-data";
 import Meal from "models/meal";
 import MealItem from "components/mealitem";
 
-
-
-
-function renderMealItem(item: { item: Meal }) {
-    return <MealItem item={item.item} />
-
-}
-
 function MealsOverviewScreen({ route, navigation }: { route: any, navigation: any }) {
+
+    function renderMealItem(item: { item: Meal }) {
+
+
+        function onPress() {
+            navigation.navigate('DetailScreen', { meal: item.item });
+        }
+
+        return <MealItem item={item.item} onPress={onPress} />
+
+    }
 
 
     // navigation.setOptions({
@@ -26,7 +29,7 @@ function MealsOverviewScreen({ route, navigation }: { route: any, navigation: an
     useLayoutEffect(() => {
         navigation.setOptions({
             title: route.params.category["title"],
-        
+
         })
     }, [categoryId, navigation])
 

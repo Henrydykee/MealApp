@@ -1,11 +1,13 @@
 import Meal from "models/meal";
 import { View, Text, StyleSheet, Pressable, Image, Platform } from "react-native";
 
-function MealItem(item: { item: Meal }) {
-    const i = item.item;
+function MealItem({ item , onPress} : { item: Meal , onPress: any}) {
+
+    const i = item;
     return <View style={styles.mealItem}>
         <Pressable
             style={({ pressed }) => pressed ? styles.buttonPressed : null}
+            onPress={onPress}
         >
             <View style={styles.innerContainer}>
                 <View>
