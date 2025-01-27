@@ -1,10 +1,14 @@
 import { Pressable, Text, View, StyleSheet, Platform } from "react-native";
 
 
-function CategoryGridTile({ title, color }: { title: string, color: string }) {
+import { GestureResponderEvent } from "react-native";
+
+function CategoryGridTile({ title, color , onPress }: { title: string, color: string , onPress : (event: GestureResponderEvent) => void }) {
 
     return <View style={styles.gridItem}>
-        <Pressable style={({ pressed }) => [styles.buttonStyle, pressed ? styles.buttonPressed : null]}>
+        <Pressable style={({ pressed }) => [styles.buttonStyle, pressed ? styles.buttonPressed : null]}
+            onPress= {onPress}
+            >
             <View style={[styles.innerContainer ,{ backgroundColor: color }]}>
                 <Text style={styles.title}>{title}</Text>
             </View>
