@@ -18,9 +18,6 @@ function MealsOverviewScreen({ route, navigation }: { route: any, navigation: an
     }
 
 
-    // navigation.setOptions({
-    //     title: route.params.category["title"]
-    // })
 
     const categoryId = route.params.category["id"];
 
