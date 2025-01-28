@@ -1,7 +1,8 @@
 import Mealdeatails from "components/mealdetails";
 import MealItem from "components/mealitem";
 import Meal from "models/meal";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 
@@ -9,22 +10,34 @@ function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
     const m: Meal = route.params.meal;
 
     return (
-        <View>
 
-            <Image style={styles.imageStyle} source={{ uri: m.imageUrl }} />
-            <Text>{m.title}</Text>
-            <Mealdeatails m={m} />
+        <ScrollView>
+            <View>
 
-            <Text>Ingredients</Text>
-            {m.ingredients.map( i => 
-                <Text key={i}>-{i}</Text>
-            )}
-            <Text>Steps</Text>
-            {m.steps.map( i => 
-                <Text key={i}>-{i}</Text>
-            )}
+                <Image style={styles.imageStyle} source={{ uri: m.imageUrl }} />
+                <Text style={styles.title}>{m.title}</Text>
+                <Mealdeatails m={m} textStyle={styles.detailTextStyle} />
 
-        </View>
+                <View style={styles.subtitleContainer}>
+                <Text style={styles.subTitle} >Ingredients</Text>
+                </View>
+
+               
+                {m.ingredients.map(i =>
+                    <Text key={i}>-{i}</Text>
+                )}
+                <View style={styles.subtitleContainer}>
+                <Text style={styles.subTitle} >Steps</Text>
+                </View>
+              
+                {m.steps.map(i =>
+                    <Text key={i}>-{i}</Text>
+                )}
+
+            </View>
+
+        </ScrollView>
+
     )
 
 }
@@ -46,7 +59,39 @@ const styles = StyleSheet.create({
     },
     imageStyle: {
         width: '100%',
-        height: 200
+        height: 350
     },
+
+    detailTextStyle: {
+        color: 'white'
+    },
+
+    title: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        margin: 8,
+        textAlign: 'center',
+        color: 'white'
+    },
+    subTitle: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+
+ 
+        textAlign: 'center',
+        marginBottom: 20,
+        marginTop: 20,
+     
+    },
+
+    subtitleContainer:{
+        borderBottomColor : 'white',
+        borderBottomWidth : 2,
+        padding: 6,
+        marginHorizontal : 24,
+        marginVertical : 4,
+    }
+
 
 });

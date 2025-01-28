@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import Meal from "models/meal";
 
-function Mealdeatails({m} : any) {
+function Mealdeatails({m , style , textStyle} : any) {
     const meal: Meal = m;
     return (
-        <View style={styles.details}>
-            <Text style={styles.detailItem}> {meal.duration}mins</Text>
-            <Text style={styles.detailItem} >{meal.complexity.toUpperCase()}</Text>
-            <Text style={styles.detailItem} >{meal.affordability.toUpperCase()}</Text>
+        <View style={[styles.details, style]}>
+            <Text style={[styles.detailItem, textStyle]}> {meal.duration}mins</Text>
+            <Text style={[styles.detailItem, textStyle]} >{meal.complexity.toUpperCase()}</Text>
+            <Text style={[styles.detailItem, textStyle]} >{meal.affordability.toUpperCase()}</Text>
         </View>
     )
 }
