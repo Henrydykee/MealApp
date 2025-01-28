@@ -11,7 +11,7 @@ function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
 
     return (
 
-        <ScrollView>
+        <ScrollView style ={{marginBottom: 30}}>
             <View>
 
                 <Image style={styles.imageStyle} source={{ uri: m.imageUrl }} />
