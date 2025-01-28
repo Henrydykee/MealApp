@@ -1,17 +1,26 @@
 import Mealdeatails from "components/mealdetails";
-import MealItem from "components/mealitem";
 import Meal from "models/meal";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { View, Text, Image, StyleSheet, ScrollView, Button } from "react-native";
+import { useLayoutEffect } from "react";
 
 
 
 function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
     const m: Meal = route.params.meal;
 
+
+    //using componets on titlebar withing a screen
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () =>{
+                return <Button title="Tap me" onPress={()=> console.log("jjj")}/>
+            }
+        });
+    } , [navigation ,]);
+
     return (
 
-        <ScrollView style ={{marginBottom: 30}}>
+        <ScrollView style={{ marginBottom: 30 }}>
             <View>
 
                 <Image style={styles.imageStyle} source={{ uri: m.imageUrl }} />
@@ -35,7 +44,7 @@ function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
                     <Text style={styles.subTitle} >Steps</Text>
                 </View>
 
-                
+
                 {m.steps.map(i => (
                     <View style={styles.listItem} key={i}>
                         <Text style={styles.itemText}>- {i}</Text>
