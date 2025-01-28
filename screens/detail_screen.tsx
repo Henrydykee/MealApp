@@ -19,20 +19,30 @@ function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
                 <Mealdeatails m={m} textStyle={styles.detailTextStyle} />
 
                 <View style={styles.subtitleContainer}>
-                <Text style={styles.subTitle} >Ingredients</Text>
+                    <Text style={styles.subTitle} >Ingredients</Text>
                 </View>
 
-               
-                {m.ingredients.map(i =>
-                    <Text key={i}>-{i}</Text>
-                )}
+
+                {m.ingredients.map(i => (
+                    <View style={styles.listItem} key={i}>
+                        <Text style={styles.itemText}>- {i}</Text>
+                    </View>
+                ))}
+
+
+
                 <View style={styles.subtitleContainer}>
-                <Text style={styles.subTitle} >Steps</Text>
+                    <Text style={styles.subTitle} >Steps</Text>
                 </View>
-              
-                {m.steps.map(i =>
-                    <Text key={i}>-{i}</Text>
-                )}
+
+                
+                {m.steps.map(i => (
+                    <View style={styles.listItem} key={i}>
+                        <Text style={styles.itemText}>- {i}</Text>
+                    </View>
+                ))}
+
+
 
             </View>
 
@@ -78,20 +88,33 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
 
- 
+
         textAlign: 'center',
         marginBottom: 20,
         marginTop: 20,
-     
+
     },
 
-    subtitleContainer:{
-        borderBottomColor : 'white',
-        borderBottomWidth : 2,
+    subtitleContainer: {
+        borderBottomColor: 'white',
+        borderBottomWidth: 2,
         padding: 6,
-        marginHorizontal : 24,
-        marginVertical : 4,
-    }
+        marginHorizontal: 24,
+        marginVertical: 4,
+    },
+
+    listItem: {
+        borderRadius: 6,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+        marginVertical: 4,
+        marginHorizontal: 12,
+        backgroundColor: '#e2b497',
+    },
+    itemText: {
+        color: '#351401',
+        textAlign: 'center',
+    },
 
 
 });
