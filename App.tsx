@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, View , Button} from 'react-native';
-import CategoryScreen from './screens/category_screen'; // Fixed typo in import
+import CategoryScreen from './screens/category_screen'; 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealsOverviewScreen from 'screens/meals_overview_screen';
@@ -8,6 +8,7 @@ import DetailScreen from 'screens/detail_screen';
 import { useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import FavoritesScreen from './screens/favorite_screen';
+import FavouriteContextProvider from 'store/context/favourite';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,6 +21,14 @@ function DrawerNavigation(){
   screenOptions={{
     headerStyle: { backgroundColor: '#24180f' },
     headerTintColor: 'white',
+    drawerStyle: {
+      backgroundColor: '#24180f',
+      width: 240,
+    },
+    drawerLabelStyle :{
+      color: 'white',
+    },
+    drawerActiveBackgroundColor : '#3f2f25',
     sceneStyle: { backgroundColor: '#24180f' },
   }}
   >
@@ -37,6 +46,7 @@ export default function App() {
       <StatusBar style="light" />
       <View style={styles.container}>
 
+        <FavouriteContextProvider>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -58,6 +68,10 @@ export default function App() {
 
           </Stack.Navigator>
         </NavigationContainer>
+
+        </FavouriteContextProvider>
+
+     
 
       </View>
     </>

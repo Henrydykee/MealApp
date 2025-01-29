@@ -2,7 +2,7 @@ import Meal from "models/meal";
 import { View, Text, StyleSheet, Pressable, Image, Platform } from "react-native";
 import Mealdeatails from "./mealdetails";
 
-function MealItem({ item , onPress} : { item: Meal , onPress: any}) {
+function MealItem({ item, onPress }: { item: Meal, onPress: any }) {
 
     const i = item;
     return <View style={styles.mealItem}>
@@ -15,7 +15,7 @@ function MealItem({ item , onPress} : { item: Meal , onPress: any}) {
                     <Image style={styles.imageStyle} source={{ uri: i.imageUrl }} />
                 </View>
                 <Text style={styles.title}> {i.title}</Text>
-                <Mealdeatails m={i}/>
+                <Mealdeatails m={i} />
             </View>
 
 

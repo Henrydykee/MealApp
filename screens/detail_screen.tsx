@@ -1,22 +1,40 @@
 import Mealdeatails from "components/mealdetails";
 import Meal from "models/meal";
 import { View, Text, Image, StyleSheet, ScrollView, Button } from "react-native";
-import { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
+import { FavouriteContext } from "store/context/favourite";
+import IconButton from "components/iconButton";
+
 
 
 
 function DetailScreen({ route, navigation }: { route: any, navigation: any }) {
     const m: Meal = route.params.meal;
 
+    const favoriteMealCtx = useContext(FavouriteContext);
+
+    const mealisFavourite = favoriteMealCtx.id.includes(m.id);
+
+    function headerButtonHnadler() {
+        if (mealisFavourite) {
+            favoriteMealCtx.removeFavourite(m.id);
+        } else {
+            favoriteMealCtx.addFavourite(m.id);
+        }
+
+    }
+
 
     //using componets on titlebar withing a screen
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () =>{
-                return <Button title="Tap me" onPress={()=> console.log("jjj")}/>
+            headerRight: () => {
+                return <IconButton 
+                icon={mealisFavourite ? 'star' : 'star-outline'}
+                color= 'white' onPress={headerButtonHnadler} />
             }
         });
-    } , [navigation ,]);
+    }, [navigation,headerButtonHnadler]);
 
     return (
 

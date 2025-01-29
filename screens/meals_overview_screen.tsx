@@ -3,6 +3,7 @@ import { useLayoutEffect } from "react";
 import { MEALS } from "data/dummy-data";
 import Meal from "models/meal";
 import MealItem from "components/mealitem";
+import MealsList from "components/mealList";
 
 function MealsOverviewScreen({ route, navigation }: { route: any, navigation: any }) {
 
@@ -17,11 +18,8 @@ function MealsOverviewScreen({ route, navigation }: { route: any, navigation: an
 
     }
 
-
-
     const categoryId = route.params.category["id"];
-
-    const displayedMeals = MEALS.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
+   // const displayedMeals = MEALS.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -34,15 +32,7 @@ function MealsOverviewScreen({ route, navigation }: { route: any, navigation: an
 
 
     return (
-        <View style={style.container}>
-            <FlatList
-                data={displayedMeals}
-                keyExtractor={(item) => item.id}
-                renderItem={renderMealItem}
-            />
-
-
-        </View>
+        <MealsList navigation={navigation} categoryId={categoryId} />
     );
 }
 
