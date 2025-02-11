@@ -1,11 +1,11 @@
 ```mermaid
 graph TD
     A[FavouriteContextProvider] --> B[FavouriteContext]
-    B --> C[id: string[]]
+    B --> C["id: string[]"]
     B --> D[addFavourite]
     B --> E[removeFavourite]
     
-    A --> F[useState<string[]>]
+    A --> F["useState<string[]>"]
     F --> G[favouriteMealId]
     F --> H[setFavoriteMealId]
     
