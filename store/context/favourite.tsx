@@ -26,7 +26,7 @@ type FavouriteContextType = {
     function removeFavourite(id: string) {
       setFavoriteMealId((prev) => prev.filter((mealId) => mealId !== id));
     }
-  
+
     const value: FavouriteContextType = {
       id: favouriteMealId,
       addFavourite,
