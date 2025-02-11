@@ -12,7 +12,12 @@ graph TD
     D --> H
     E --> H
     
-    A --> I[children]
+    I[FavoriteScreen] --> |useContext| B
+    I --> J[FlatList]
+    J --> K[MealItem]
+    
+    A --> L[children]
     
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#bbf,stroke:#333,stroke-width:2px
+    style I fill:#bfb,stroke:#333,stroke-width:2px
